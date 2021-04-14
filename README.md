@@ -2,7 +2,7 @@
 
 기술
 
-- JS
+- [JS](./기술/JS.md)
 - CSS
 - HTML
 - React
