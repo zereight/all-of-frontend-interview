@@ -111,7 +111,57 @@ function은 그 자체로 하나의 type으로 취급됩니다. 함수를 변수
 this가 따로 바인딩 되지 않으니까, 선언된 코드 바로 바깥의 함수의 this(lexical this)를 사용하는 것과 같습니다.
 그에 반해, function의 this는 아래 처럼, 함수 종류에 따라서 this가 가리키는 객체가 다릅니다.
 
-    - 생성자 => 새로운 객체
-    - strict 모드 => undefined
-    - 메소드: 베이스 객체
-    - 콜백: 전역 객체 window
+- 생성자 => 새로운 객체
+- strict 모드 => undefined
+- 메소드: 베이스 객체
+- 콜백: 전역 객체 window
+
+### Higher-order-function
+
+> 고차 함수란 무엇인가요?
+
+고차 함수는 한개 이상의 함수가 argument(전달인자) 이거나, 함수를 리턴시키는 함수를 의미합니다.
+
+<code>const hof = () => () => 5</code>
+
+높은 추상화가 적용된 고차 함수를 사용해서 명령형인 코드가 아니라, 선언적인 코드를 작성할 수 있다.
+ex) filter이라는 고차 함수를 쓰지 않으면, for문을 활용해서 불필요한 코드들이 사용됨.
+
+고차 함수를 활용하는 경우는 다음과 같습니다.
+
+- 클로저
+
+  ```js
+  const closure = function () {
+    let count = 0;
+    return function increment() {
+      count++;
+      return count;
+    };
+  };
+  const incrementFn = closure();
+  incrementFn(); // 1
+  incrementFn(); // 2
+  ```
+
+- 메모이제이션/캐싱
+
+  ```js
+  function memoizedAddTo80() {
+    let cache = {};
+    return function (n) {
+      if (n in cache) {
+        return cache[n];
+      } else {
+        cache[n] = n + 80;
+        return cache[n];
+      }
+    };
+  }
+
+  const memoized = memoizedAddTo80();
+  memoized(5); // 85
+  ```
+
+- 그 외 함수형 프로그래밍
+  여기서 고차함수가 빛을 발하는 순간은 바로 함수형 프로그래밍이다.
