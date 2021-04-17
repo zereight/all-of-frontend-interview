@@ -6,6 +6,8 @@
 
 [값, 식, 문](#literal,-expression,-statement)
 
+[화살표 함수와 function의 차이점은 무엇인가요?](#arrow-function-vs-regular-function)
+
 ### What is function
 
 > 함수의 정의
@@ -97,3 +99,19 @@ function은 그 자체로 하나의 type으로 취급됩니다. 함수를 변수
    - `var z = x + y;`
 
 식은 값으로 평가되기 때문에, 보통 '문'과 '식'으로 비교를 많이한다. '문'과 '식'의 차이는 `식은 값인 것`이고, `문은 값이 아닌것`이라고 할 수 있다.
+
+### arrow function vs regular function
+
+> 화살표 함수와 function의 차이점은 무엇인가요?
+
+화살표 함수는 function 표현에 비해서 구문이 짧고(그래서 콜백 함수로 사용하기 적합), 자신의 this, arguments 등을 바인딩 하지 않습니다. (arguments 대시넹 rest 파라미터를 사용할 수 있습니다.) 또한 화살표함수는 prototype 속성이 없습니다.
+
+화살표 함수는 항상 익명함수이고, function은 익명함수 또는 이름을 정의할 수 있습니다.
+
+this가 따로 바인딩 되지 않으니까, 선언된 코드 바로 바깥의 함수의 this(lexical this)를 사용하는 것과 같습니다.
+그에 반해, function의 this는 아래 처럼, 함수 종류에 따라서 this가 가리키는 객체가 다릅니다.
+
+    - 생성자 => 새로운 객체
+    - strict 모드 => undefined
+    - 메소드: 베이스 객체
+    - 콜백: 전역 객체 window
