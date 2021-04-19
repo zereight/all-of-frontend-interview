@@ -4,7 +4,7 @@
 
 [함수 표현식, 함수 선언식이란 무엇인가요?](#function-expresstion)
 
-[값, 식, 문](#literal,-expression,-statement)
+[값, 식, 문](#literal-expression-statement)
 
 [화살표 함수와 function의 차이점은 무엇인가요?](#arrow-function-vs-regular-function)
 
@@ -13,6 +13,8 @@
 [즉시 실행 함수 (IIFE)](#iife)
 
 [옵셔널 체이닝은 언제 사용해야 하나요?](#optional-chaining)
+
+[컨텍스트와 스코프에 대해서 설명해주세요.](#context-scope)
 
 ### What is function
 
@@ -75,7 +77,7 @@ function은 그 자체로 하나의 type으로 취급됩니다. 함수를 변수
 
 (작성중)
 
-### literal, expression, statement
+### literal-expression-statement
 
 > 값, 식, 문
 
@@ -254,3 +256,15 @@ Immediately Invoked Function Expression
 존재하지 않을 수도 있는 메서드를 호출할떄 사용한다.
 즉, 함수 호출과 optional chaining을 사용하면, 메서드를 찾을 수 없는 경우에
 해당 표현식이 자동으로 undefined를 반환하게 할 수 있다.
+
+### context-scope
+
+> 컨텍스트와 스코프에 대해서 설명해주세요.
+
+1. 컨텍스트
+   컨텍스트는 객체를 기반으로 한 용어로써, 함수가 어떻게 호출되는지에 따라서 this를 지칭하는 객체가 달라지게 되는데, 이렇게 현재 this가 무엇을 지칭하느냐를 구분짓는 것이 컨텍스트이다.
+   만약, 함수 a와 b의 this가 서로 다른 객체를 지칭하고 있는경우, 두 함수의 컨텍스트는 다르다고 할 수 있다.
+
+2. 스코프
+   스코프는 함수를 기반으로한 용어이다. 특정 함수가 실행될 때,
+   해당 함수에서 변수에 대한 접근 범위가 어디까지 인지를 나타내는 개념이 스코프이다.
