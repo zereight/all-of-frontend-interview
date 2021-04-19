@@ -12,6 +12,8 @@
 
 [즉시 실행 함수 (IIFE)](#iife)
 
+[옵셔널 체이닝은 언제 사용해야 하나요?](#optional-chaining)
+
 ### What is function
 
 > 함수의 정의
@@ -244,3 +246,11 @@ Immediately Invoked Function Expression
   }
 )(1 + 2); // 3
 ```
+
+### optional-chaining
+
+> 옵셔널 체이닝은 언제 사용해야 하나요?
+
+존재하지 않을 수도 있는 메서드를 호출할떄 사용한다.
+즉, 함수 호출과 optional chaining을 사용하면, 메서드를 찾을 수 없는 경우에
+해당 표현식이 자동으로 undefined를 반환하게 할 수 있다.
