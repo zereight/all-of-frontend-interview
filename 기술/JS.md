@@ -20,7 +20,9 @@
 
 [동적 타이핑, 정적 타이핑](#dynamic-typing-and-static-typing)
 
-[Prototype에 관하야](#proptotype)
+[Prototype에 관하여](#proptotype)
+
+[attributes vs property](#attributes-vs-property)
 
 ### What is function
 
@@ -361,3 +363,36 @@ lee도 마찬가지 이다.
 이때 kim.sum()을 수행하면, kim에서 sum이라는 프로퍼티를 찾고, 그것이 없으면 "**proto**"로 프로토타입으로 이동하여 sum이라는 프로퍼티가 존재하는지 확인한다.
 
 즉, "**proto**"는 모든 객체가 가지고 있는 속성이고 prototype은 함수 객체만의 가지고 있는 프로퍼티이며, 함수 객체가 생성자로 사용될때 부모역할을하는 객체를 가리킨다.
+
+### attributes-vs-property
+
+> 속성과 프로퍼티
+
+- 속성(attr)
+  attr는 html문서에서 엘리먼트에 추가적인 정보를 넣을 때 사용되는 요소이다.
+
+- property
+  프로퍼티란 html DOM안에서 attr를 가리키는 표현이다.
+
+왜 attribute와 property를 구별하는 걸까?
+
+attr는 html dom/file안에서, property는 html DOM tree안에서 존재한다.
+
+이것이 뜻하는 바는 attr는 정적으로 변하지 않고, property는 동적으로 그 값이 변할 수 있다는 것을 내포한다.
+예를 들자면 사용자가 체크박스에 체크를 하면, attr의 상태는 편하지 않지만, property의 상태는 checked로 변하게 된다.
+
+즉, attr는 속성 자체이고, property는 속성값을 다루는 용도로 사용하게 된다.
+
+제이쿼리에서는 어떻게 분리하고 있을까?
+
+```js
+<checkbox id="my-checkbox" type="checkbox" checked />;
+
+var $checkbox = $("#my-checkbox");
+
+alert($checkbox.attr("checked")); // checked 속성의 값을 표시
+
+alert($checkbox.prop("checked")); // checked 프로파티값을 표시
+```
+
+prop은 checked의 값인 true를 반환하고, attr는 속성값 자체인 checked를 반환하는 것을 알 수 있다.
