@@ -20,6 +20,8 @@
 
 [동적 타이핑, 정적 타이핑](#dynamic-typing-and-static-typing)
 
+[Prototype에 관하야](#proptotype)
+
 ### What is function
 
 > 함수의 정의
@@ -309,3 +311,53 @@ Immediately Invoked Function Expression
 2. 동적 타이핑
    정적 타이핑과 다르게, 자료형을 컴파일 타임이 아닌, 런타임에 결정하는 것으로, 자료형의 명시 없이 병수명만 가지고 선언 및 값을 할당하는 것이 가능하다.
    python, js 등이 잇으며 런타임 당시에 타입에 대한 결정을 진행하므로 프로그래밍 입장에서는 편할 수 있지만, 런타임 동안 예상치 못한 에러가 발생할 수 있고, 정적 타이핑 언어에 비해서 느린 편이다.
+
+### proptotype
+
+> 프로토 타입이란
+
+자바스크립트는 프로토타입 기반 언어이다.
+프로토타입 기반 프로그래밍은 객체지향 프로그래밍의 한 형태인데, 클래스가 없고, 클래스 기반 언어에서 상속을 사용하는 것과 다르게, 객체를 프로토타입으로 하여서 복제의 과정을 통해서 객체의 동작 방식을 다시 사용할 수 있다.
+
+prototype 단어의 뜻은 객체의 원형을 뜻한다.
+
+```js
+// 아래 두 코드는 같다.
+function Person() {}
+var Person = new Function();
+```
+
+```js
+function Person(name, first, second) {
+  this.name = name;
+  this.first = first;
+  this.second = second;
+}
+
+Person.prototype.sum = function () {};
+```
+
+위 코드를 살펴보자.
+위 코드는 Person 객체를 생성하였으므로 Person과 Person의 prototype, 2개의 객체가 생성된다.
+
+1. Person
+2. Person's prototype
+
+Person은 prototype 프로퍼티를 가지고 있으며 이것은 Person's prototype을 기리킨다.
+Person's prototype의 constructor는 Person을 기리킨다.
+
+그리고 Person's prototype은 sum이라는 프로퍼티도 가지고 있다.
+
+이 상태에서 kim, lee라는 새로운 객체를 생성하면
+
+```js
+var kim = new Person("kim", 10, 20);
+var lee = new Person("lee", 20, 30);
+```
+
+kim이라는 객체가 생성되고 kim은 "**proto**"라는 프로퍼티를 가지며, 이것은 Person's prototype을 가리킨다.
+lee도 마찬가지 이다.
+
+이때 kim.sum()을 수행하면, kim에서 sum이라는 프로퍼티를 찾고, 그것이 없으면 "**proto**"로 프로토타입으로 이동하여 sum이라는 프로퍼티가 존재하는지 확인한다.
+
+즉, "**proto**"는 모든 객체가 가지고 있는 속성이고 prototype은 함수 객체만의 가지고 있는 프로퍼티이며, 함수 객체가 생성자로 사용될때 부모역할을하는 객체를 가리킨다.
