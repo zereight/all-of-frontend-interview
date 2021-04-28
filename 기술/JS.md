@@ -24,6 +24,8 @@
 
 [attributes vs property](#attributes-vs-property)
 
+[디바운스와 쓰로틀링](#debounce-throttling)
+
 ### What is function
 
 > 함수의 정의
@@ -396,3 +398,38 @@ alert($checkbox.prop("checked")); // checked 프로파티값을 표시
 ```
 
 prop은 checked의 값인 true를 반환하고, attr는 속성값 자체인 checked를 반환하는 것을 알 수 있다.
+
+### debounce-throttling
+
+> 디바운스
+
+디바운스는 어떤 이벤트가 여러번 발생할 때, 처음 또는 마지막 이벤트만이 실행되도록 만드는 개념이다.
+
+```js
+let debounce = null;
+
+const func = (e) => {
+  if (debounce) {
+    clearTimeout(debounce);
+  }
+
+  debounce = setTimeout(() => 동작, 시간);
+};
+```
+
+> 쓰로틀링
+
+쓰로틀링은 어떤 이변트가 여러번 발생할 때, 일정 시간 동안 함번만 실행되도록 만드는 개념이다.
+
+```js
+let throttling = null;
+
+const func = (e) => {
+  if (!throttling) {
+    throttling = setTimeout(() => {
+      clearTimeout(throttling);
+      동작;
+    }, 시간);
+  }
+};
+```
