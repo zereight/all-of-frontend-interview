@@ -26,6 +26,8 @@
 
 [디바운스와 쓰로틀링](#debounce-throttling)
 
+[focusout과 blur의 차이](#focusout-blur)
+
 ### What is function
 
 > 함수의 정의
@@ -433,3 +435,19 @@ const func = (e) => {
   }
 };
 ```
+
+### focusout-blur
+
+> 차이점
+
+focusout은 의미 그대로 엘리먼트가 포커스를 잃었을 때 발생되는 이벤트이다.
+
+하지만 blur도 포커스를 잃었을 때 발생되는 이벤트이다.
+
+기능은 같지만 차이점은 버블링 여부이다.
+
+focusout은 다른 이벤트들 처럼 버블링이 일어나고, blur는 버블링이 일어나지 않는다.
+
+보통
+focusin - focusout
+focus - blur 이렇게 짝을 이루어서 분류된다.
