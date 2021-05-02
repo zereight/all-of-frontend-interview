@@ -30,6 +30,8 @@
 
 [명시적/암시적 바인딩, 동적/정적 바인딩](#binding)
 
+[바인딩 우선순위](#binding-priority)
+
 ### What is function
 
 > 함수의 정의
@@ -77,7 +79,7 @@ function은 그 자체로 하나의 type으로 취급됩니다. 함수를 변수
 
 ### 명시적/암시적 바인딩, 동적/정적 바인딩
 
-### binding
+### Binding
 
 > 명시적 바인딩
 
@@ -104,6 +106,12 @@ function은 그 자체로 하나의 type으로 취급됩니다. 함수를 변수
 > new 바인딩
 
 new 바인딩은 new로 반환된 obj 객체를 this 컨텍스트와 바인딩되는 규칙을 따르는 것을 뜻한다.
+
+### Binding-priority
+
+new 바인딩 > 명시적 바인딩 > 암시적 바인딩 > 기본 바인딩
+
+[https://jeonghwan-kim.github.io/2017/10/22/js-context-binding.html](https://jeonghwan-kim.github.io/2017/10/22/js-context-binding.html)
 
 ### First class object
 
