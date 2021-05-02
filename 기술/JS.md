@@ -32,6 +32,27 @@
 
 [바인딩 우선순위](#binding-priority)
 
+[원시타입에 관해 설명해주세요](#primitive)
+
+### primitive
+
+> 정의
+
+원시 값은 객체가 아니면서 메서드도 가지지 않는 데이터이다.
+
+> 종류
+
+원시 값에는 다음과 같은 6 종류가 있다.
+
+1. string
+2. number
+3. bigint (까먹을수도있음 주의!)
+4. boolean
+5. undefined
+6. symbol
+
+null은 왜 원시타입이 아니냐면, Object이기도 하고, 어차피 모든 구조화된 자료형은 프로토타입 체인에 따라서 null의 자손이다. [출처](https://developer.mozilla.org/ko/docs/Glossary/Primitive)
+
 ### What is function
 
 > 함수의 정의
