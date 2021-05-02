@@ -5,6 +5,6 @@
 - [JS](./기술/JS.md)
 - CSS
 - HTML
-- React
+- [React](./기술/React.md)
 - CS
 - 기타
