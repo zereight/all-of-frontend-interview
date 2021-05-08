@@ -6,6 +6,16 @@
 
 [커스텀 훅이란 무엇인가요?](#what-is-custom-hook)
 
+[왜 React에서는 a태그 대신 Link를 사용하나요?](why-link-instead-a)
+
+### why link instead a
+
+> 왜 react에서는 a태그 대신 Link태그를 사용하나요?
+
+a태그는 페이지를 이동시키면서, 페이지를 아예 새로 불러오므로 SPA가 되지 않는다.
+새로 페이지가 렌더링 되면서 state등이 모두 초기화된다...
+Link는 HTML5의 history api를 사용해서 브라우저의 주소만 바꾸고 페이지를 새로 불러올 수 있게 해준다.
+
 ### what is custom hook
 
 react로 개발을 하다보면, 상태관련 로직이 중복되는 경우를 발견할 수 있다.
