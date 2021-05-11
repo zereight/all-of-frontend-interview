@@ -8,6 +8,13 @@
 
 [왜 React에서는 a태그 대신 Link를 사용하나요?](why-link-instead-a)
 
+[Route와 Link의 차이는 무엇인가요?](#route-vs-link)
+
+### route vs link
+
+Route는 특정 주소에 따라서 컴포넌트를 연결시키는 역할을 한다.
+Link는 컴포넌트를 클릭하면 다른 주소로 이동시키게 한다.
+
 ### why link instead a
 
 > 왜 react에서는 a태그 대신 Link태그를 사용하나요?
