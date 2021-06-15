@@ -1,4 +1,4 @@
-redux가 기존 flux와 다른 점은 무엇일까?
+## ***redux가 기존 flux와 다른 점은 무엇일까?***
 
 https://taegon.kim/archives/5288
 
