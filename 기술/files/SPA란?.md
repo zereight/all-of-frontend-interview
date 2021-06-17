@@ -32,3 +32,4 @@ Single Page Application의 약자이다.
 유저가 실제로 방문하지 않을 수도 있는 페이지의 렌더링 스크립트도 불러오기 때문이다.
 (그래서 code splitting을 사용한다.)
 
+SEO 문제가 있다.
