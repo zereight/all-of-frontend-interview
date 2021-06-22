@@ -64,9 +64,9 @@ Cross Origin Resource Sharing
 
    credentials는 다음과 같은 3가지 옵션을 가진다.
 
-   	1. `smae-origin`: 같은 출처 간 요청에만 인증 정보를 담을 수 있다.
-    	2. `include`: 모든 요청에 인증 정보를 담을 수 있다.
-    	3. `omit`: 모든 요청에 인증 정보를 담지 않는다.
+   	1. `same-origin`: 같은 출처 간 요청에만 인증 정보를 담을 수 있다.
+   	2. `include`: 모든 요청에 인증 정보를 담을 수 있다.
+   	3. `omit`: 모든 요청에 인증 정보를 담지 않는다.
 
    
 
@@ -78,3 +78,4 @@ Cross Origin Resource Sharing
 
 
 CORS를 해결할 수 있는 방법은 [여기](https://evan-moon.github.io/2020/05/21/about-cors/#credentialed-request)를 참고하세요.
+

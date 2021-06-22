@@ -4,7 +4,7 @@
 
 ## AJAX
 
-Aasynchronous Javascrtip And XML
+Asynchronous Javascript And XML
 
 
 
