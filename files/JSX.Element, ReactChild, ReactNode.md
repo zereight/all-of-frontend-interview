@@ -1,44 +1,109 @@
-## JSX.ELement
+JSX.Element
+ReactChild
+ReactChildren
+ReactNode
+ReactElement
 
-`JSX.Element` ´Â 1°³ÀÇ ¸®¾×Æ® Element¸¸ Çã¿ëÇÑ´Ù. (stringµµ X)
-¸¸¾à `JSX.ELement`·Î ¿©·¯ ¸®¾×Æ® Element¸¦ ¹Ş°í ½Í´Ù¸é
+ì´ê²ƒë“¤ì€ íƒ€ì…ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ë¦¬ì•¡íŠ¸ ì»´í¬ë„ŒíŠ¸ì˜ íƒ€ì…ì„ ì •í•´ì£¼ëŠ” ê²ƒë“¤ì´ë‹¤.
 
-```tsx
-children: JSX.Element | JSX.Element[];
+ê´€ê³„ëŠ” ë‹¤ìŒê³¼ ê°™ë‹¤.
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https://blog.kakaocdn.net/dn/6zVOF/btqEk1y48AS/Jbzo3JU5BjVF0pNaQXia71/img.png"/>
+
+> ReactNode
+
+ReactNodeëŠ” ë§ŒëŠ¥ì´ë‹¤.
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
+
+```ts
+type ReactNode =
+  | ReactChild
+  | ReactFragment
+  | ReactPortal
+  | boolean
+  | null
+  | undefined;
 ```
 
-ÀÌ·¸°Ô ½áÁà¾ß ÇÑ´Ù.
+stringë„ ë˜ê³ , í¬íƒˆë„ ë˜ê³ , í”„ë˜ê·¸ë¨¼íŠ¸ë„ ë˜ê³ , ì—¬ëŸ¬ ì»´í¬ë„ŒíŠ¸ë„ëœë‹¤.
 
-## ReactChild
+> ReactChild
 
-`JSX.Element`ÀÇ ÇÏÀ§È£È¯À¸·Î½á, stringÀ» Çã¿ëÇÏÁö ¾Ê´Â´Ù.
-¸¸¾à ¿©·¯ ¸®¾×Æ® Element¸¦ ¹Ş°í string±îÁö ¹Ş°í ½ÍÀ¸¸é ÀÌ·¸°Ô ¼öÁ¤ÇØÁà¾ßÇÑ´Ù.
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
 
-```tsx
-children: JSX.Element | JSX.Element[] | string | string[];
+```ts
+type ReactChild = ReactElement | ReactText;
 ```
 
-ÀÌÁ¦´Â ÀÌ·¸°Ô ¾²Áö¸»°í `ReactChild`¸¦ ¾²¸éµÈ´Ù.
+ë¦¬ì•¡íŠ¸ ì»´í¬ë„ŒíŠ¸ + ìˆ«ì + ë¬¸ìì—´ì„ ëœ»í•œë‹¤.
 
-```tsx
-children: ReactChild | ReactChild[];
+> ReactElement
+
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
+
+```ts
+interface ReactElement<
+  P = any,
+  T extends string | JSXElementConstructor<any> =
+    | string
+    | JSXElementConstructor<any>
+> {
+  type: T;
+  props: P;
+  key: Key | null;
+}
 ```
 
-ÇÏÁö¸¸ ÀÌ°Íµµ ¿©·¯ ¸®¾×Æ® Element¸¦ Çã¿ëÇÏÁö ¾Ê¾Æ¼­ µû·Î ¼±¾ğÀÌ ÇÊ¿äÇÏ´Ù.
+ë¦¬ì•¡íŠ¸ì—ì„œ createElementë¥¼ í–ˆì„ë•Œ ë°˜í™˜ë˜ëŠ” ê°ì²´êµ¬ì¡°ì™€ ë™ì¼í•˜ë‹¤.
 
-## ReactNode
+> ReactText
 
-ÀÌÁ¦´Â
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
 
-```tsx
-children: ReactChild | ReactChild[];
+```ts
+type ReactText = string | number;
 ```
 
-ÀÌ·¸°Ô ¾µ ÇÊ¿ä¾øÀÌ
+ë¬¸ìì—´ê³¼ ìˆ«ìë¥¼ ëœ»í•œë‹¤.
 
-```tsx
-children: ReactNode;
+> ReactChildren
+
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
+
+```ts
+interface ReactChildren {
+  map<T, C>(
+    children: C | C[],
+    fn: (child: C, index: number) => T
+  ): C extends null | undefined
+    ? C
+    : Array<Exclude<T, boolean | null | undefined>>;
+  forEach<C>(children: C | C[], fn: (child: C, index: number) => void): void;
+  count(children: any): number;
+  only<C>(children: C): C extends any[] ? never : C;
+  toArray(
+    children: ReactNode | ReactNode[]
+  ): Array<Exclude<ReactNode, boolean | null | undefined>>;
+}
 ```
 
-ÀÌ·¸°Ô ¾µ ¼ö ÀÖ´Ù.
-ÀÌ°Ç ¿©·¯ Elementµµ µÇ°í, stringµµ µÇ°í, numbersµµ µÇ°í, fragmentsµµ µÇ°í, portalsµµ µÇ°í.. ´ÙµÈ´Ù!
+> JSX.Element
+
+ì½”ë“œëŠ” ì•„ë˜ì™€ ê°™ë‹¤.
+
+```ts
+declare global {
+    namespace JSX {
+        interface Element extends React.ReactElement<any, any> { }
+```
+
+ì¦‰ JSX.ElementëŠ” ReactElementì™€ ê°™ë‹¤ê³  ë³¼ ìˆ˜ ìˆë‹¤.
+
+---
+
+ì´ë ‡ë“¯ Reactì˜ ì»´í¬ë„ŒíŠ¸ Typeì—ëŠ” ë‹¤ì–‘í•˜ê³  ë³µì¡í•œ íƒ€ì…ë“¤ì´ ì¡´ì¬í•œë‹¤.
+ê·¸ì¤‘ì—ì„œ ê°€ì¥ í¸í•˜ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ê²ƒì€ `ReactNode`ì´ë‹¤.
+
+ì‚¬ì‹¤ children propsê°’ìœ¼ë¡œ ì–´ë–¤ ê²ƒì´ë“  ë“¤ì–´ì˜¬ ìˆ˜ ìˆê²Œ í•˜ê² ë‹¤ëŠ” ì˜ë¯¸ë¡œ íƒ€ì…ì„ ëŒ€ë¶€ë¶„ `ReactNode`ë¡œ ë‘ì—ˆëŠ”ë°,
+ì‚¬ìš©í•˜ë‹¤ ë³´ë©´ ì–´ë–¤ ì»´í¬ë„ŒíŠ¸ì˜ childrenì€ string ë˜ëŠ” undefinedê°€ ë˜ë©´ ì•ˆë˜ëŠ” ê²½ìš°, ë˜ëŠ” ë¬´ì¡°ê±´ `string`ìœ¼ë¡œ ë“¤ì–´ì˜¤ëŠ” ê²½ìš°ê°€ ìƒê²¼ë‹¤.
+
+ì´ëŸ° ë¶€ë¶„ì€ íƒ€ì… ì¶”ë¡ ì´ ì˜ë˜ë„ë¡ êµ¬ì²´ì ìœ¼ë¡œ ì°¨ê·¼ì°¨ê·¼ ë¦¬íŒ©í„°ë§ í•´ì£¼ëŠ” ê²ƒì´ ì˜³ì€ê²ƒ ê°™ë‹¤.
